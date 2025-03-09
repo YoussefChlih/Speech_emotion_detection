@@ -84,7 +84,15 @@ This project leverages audio signal processing and machine learning techniques t
     1. Update the `model-converter.py` to point the the new `.h5` or `keras` file.
     2. Run the `model-converter.py` to create the new `model.json` file.
     3. Replace the old `model.json` with the new one.
-
+### Example with Images:
+![Image Alt Text]("C:\Users\chlih\OneDrive\Images\Captures d’écran\Screenshot 2025-03-09 051441.png")
+![Image Alt Text]("C:\Users\chlih\OneDrive\Images\Captures d’écran\Screenshot 2025-03-09 051441.png")
+![Image Alt Text]("C:\Users\chlih\OneDrive\Images\Captures d’écran\Screenshot 2025-03-09 051453.png")
+**After recording for 16 seconds without the camera's permission**
+![Image Alt Text]("C:\Users\chlih\OneDrive\Images\Captures d’écran\Screenshot 2025-03-09 051600.png")
+![Image Alt Text]("C:\Users\chlih\OneDrive\Images\Captures d’écran\Screenshot 2025-03-09 051623.png")
+![Image Alt Text]("C:\Users\chlih\OneDrive\Images\Captures d’écran\Screenshot 2025-03-09 051659.png")
+![Image Alt Text]("C:\Users\chlih\OneDrive\Images\Captures d’écran\Screenshot 2025-03-09 051726.png")
 ## Contributing
 
 We welcome contributions! If you have ideas for improvements, bug fixes, or new features, please feel free to open an issue or submit a pull request.  Please follow these guidelines:
