@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détection d'Émotions Vocales</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/3.18.0/tf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/essentia.js/0.1.3/essentia.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/essentia.js/0.1.3/essentia.wasm.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Détection d'Émotions Vocales</h1>
+            <p class="subtitle">Analysez vos émotions à travers votre voix en temps réel</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="content">
+            <div class="content-left">
+                <div class="card">
+                    <h2 class="card-title">Caméra et Microphone</h2>
+                    <div class="camera-container">
+                        <video id="video-element" autoplay muted></video>
+                    </div>
+                    
+                    <div id="status" class="status-ready">
+                        Prêt à démarrer l'enregistrement
+                    </div>
+                    
+                    <div class="audio-visualizer" id="audio-visualizer">
+                        <!-- Les barres seront générées en JS -->
+                    </div>
+                    
+                    <div class="timer" id="timer">00:00</div>
+                    
+                    <div class="controls">
+                        <button id="start-btn" class="btn-primary">
+                            <i class="fas fa-play"></i> Démarrer
+                        </button>
+                        <button id="stop-btn" class="btn-danger" disabled>
+                            <i class="fas fa-stop"></i> Arrêter
+                        </button>
+                        <button id="generate-btn" class="btn-success" disabled>
+                            <i class="fas fa-file-alt"></i> Générer Rapport
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="card-title">Émotions Détectées</h2>
+                    <div class="loading hidden" id="loading-emotions">
+                        <div class="loading-spinner"></div>
+                        <div class="loading-text">Analyse des émotions en cours...</div>
+                    </div>
+                    
+                    <div id="emotion-list" class="emotion-list">
+                        <!-- Emotions will be dynamically generated here -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-right">
+                <div class="card">
+                    <h2 class="card-title">Analyse en Temps Réel</h2>
+                    <div class="chart-container">
+                        <canvas id="emotion-chart"></canvas>
+                    </div>
+                </div>
+                
+                <div id="report-section" class="card hidden">
+                    <h2 class="card-title">Rapport d'Analyse Émotionnelle</h2>
+                    
+                    <div class="report">
+                        <div class="report-title">Résumé des Émotions</div>
+
+                        <div class="report-stats">
+                            <div class="stat-card">
+                                <div class="stat-value" id="dominant-emotion">Neutre</div>
+                                <div class="stat-label">Émotion Dominante</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value" id="emotion-changes">0</div>
+                                <div class="stat-label">Changements Émotionnels</div>
+                            </div>
+
+                            <div class="stat-card">
+                                <div class="stat-value" id="recording-duration">00:00</div>
+                                <div class="stat-label">Durée d'Enregistrement</div>
+                            </div>
+                        </div>
+                        
+                        <div class="report-timeline">
+                            <div class="timeline-title">Distribution Émotionnelle</div>
+                            <canvas id="distribution-chart"></canvas>
+                        </div>
+                        
+                        <div class="report-summary">
+                            <div class="summary-title">Analyse Globale</div>
+                            <p id="analysis-text">
+                                Aucune analyse disponible. Veuillez enregistrer votre voix et générer un rapport.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Dans le div id="report-section" -->
+                    <div class="report-summary">
+                        <div class="summary-title">Analyse Détaillée</div>
+                        <pre id="analysis-text" class="analysis-text">
+                            Aucune analyse disponible. Veuillez enregistrer votre voix et générer un rapport.
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="feature-extractor.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
